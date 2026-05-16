@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FastTools - Tools Online Gratis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0f1a;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: #11182b;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: #1a2440;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: #2a3a6b;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #121a2e;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #00c6ff;
+    }
+
+    textarea, input[type="text"], input[type="number"] {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      outline: none;
+      background: #0b0f1a;
+      color: white;
+      margin-top: 8px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    button {
+      background: #0072ff;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-right: 6px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #0059c7;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: #00c6ff;
+      color: black;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .download-btn:hover {
+      background: #00a6d8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #11182b;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    .ads {
+      background: #1a2440;
+      padding: 15px;
+      text-align: center;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .info {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.85;
+      background: #0b0f1a;
+      padding: 10px;
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .row > div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    canvas {
+      margin-top: 15px;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>FastTools</h1>
+  <p>Tools Online Gratis | Text, QR, Password, Compress, Encode - Siap buat cuan iklan</p>
+</header>
+
+<nav>
+  <a href="#texttools">Text Tools</a>
+  <a href="#compress">Kompres Gambar</a>
+  <a href="#qrcode">QR Code</a>
+  <a href="#password">Password</a>
+  <a href="#encode">Encode/Decode</a>
+  <a href="#random">Random</a>
+  <a href="#download">Download</a>
+</nav>
+
+<div class="container">
+
+  <div class="ads">
+    🔥 SLOT IKLAN #1 (Adsterra / Adsense)  
+    <br>Paste script iklan di sini
+  </div>
+
+  <!-- TEXT TOOLS -->
+  <div class="card" id="texttools">
+    <h2>Text Tools (Super Lengkap)</h2>
+    <p>Masukkan teks lalu pilih tools.</p>
+
+    <label><b>Input Text:</b></label>
+    <textarea id="inputText" placeholder="Tulis teks di sini..."></textarea>
+
+    <button onclick="toUpper()">UPPERCASE</button>
+    <button onclick="toLower()">lowercase</button>
+    <button onclick="titleCase()">Title Case</button>
+    <button onclick="reverseText()">Reverse</button>
+    <button onclick="removeSpaces()">Remove Spaces</button>
+    <button onclick="removeExtraSpaces()">Remove Extra Spaces</button>
+    <button onclick="removeNewLines()">Remove Enter</button>
+    <button onclick="countText()">Count Words</button>
+    <button onclick="clearAll()">Clear</button>
+
+    <h3>Output:</h3>
+    <textarea id="outputText" readonly></textarea>
+
+    <button onclick="copyOutput()">Copy Output</button>
+    <button onclick="downloadTxt()">Download TXT</button>
+
+    <div class="info" id="countResult">📌 Info: Word count akan muncul di sini.</div>
+  </div>
+
+  <div class="ads">📌 SLOT IKLAN #2</div>
+
+  <!-- IMAGE COMPRESS -->
+  <div class="card" id="compress">
+    <h2>Kompres Gambar</h2>
+    <input type="file" id="imageInput" accept="image/*">
+    <br>
+    <button onclick="compressImage()">Kompres Sekarang</button>
+
+    <p id="imgInfo"></p>
+    <a id="downloadLink" class="download-btn" style="display:none;" download="compressed.jpg">Download Hasil</a>
+  </div>
+
+  <div class="ads">📌 SLOT IKLAN #3</div>
+
+  <!-- QR CODE -->
+  <div class="card" id="qrcode">
+    <h2>QR Code Generator</h2>
+    <p>Buat QR Code untuk link, teks, WA, Instagram, dll.</p>
+
+    <input type="text" id="qrText" placeholder="Masukkan teks atau link...">
+    <button onclick="generateQR()">Generate QR</button>
+    <button onclick="downloadQR()">Download QR</button>
+
+    <canvas id="qrCanvas" width="250" height="250"></canvas>
+  </div>
+
+  <div class="ads">📌 SLOT IKLAN #4</div>
+
+  <!-- PASSWORD GENERATOR -->
+  <div class="card" id="password">
+    <h2>Password Generator</h2>
+    <p>Buat password random kuat untuk akun.</p>
+
+    <div class="row">
+      <div>
+        <label>Panjang Password:</label>
+        <input type="number" id="passLength" value="12" min="4" max="50">
+      </div>
+      <div>
+        <label>Jumlah Password:</label>
+        <input type="number" id="passCount" value="5" min="1" max="20">
+      </div>
+    </div>
+
+    <button onclick="generatePassword()">Generate</button>
+
+    <textarea id="passOutput" readonly placeholder="Password akan muncul di sini..."></textarea>
+    <button onclick="copyPassword()">Copy</button>
+  </div>
+
+  <div class="ads">📌 SLOT IKLAN #5</div>
+
+  <!-- ENCODE DECODE -->
+  <div class="card" id="encode">
+    <h2>Encode / Decode Tools</h2>
+    <p>Tools untuk coding, link, dan text keamanan ringan.</p>
+
+    <label><b>Input:</b></label>
+    <textarea id="encodeInput" placeholder="Masukkan teks..."></textarea>
+
+    <button onclick="base64Encode()">Base64 Encode</button>
+    <button onclick="base64Decode()">Base64 Decode</button>
+    <button onclick="urlEncode()">URL Encode</button>
+    <button onclick="urlDecode()">URL Decode</button>
+
+    <label><b>Output:</b></label>
+    <textarea id="encodeOutput" readonly></textarea>
+
+    <button onclick="copyEncode()">Copy Output</button>
+  </div>
+
+  <div class="ads">📌 SLOT IKLAN #6</div>
+
+  <!-- RANDOM GENERATOR -->
+  <div class="card" id="random">
+    <h2>Random Number Generator</h2>
+    <p>Buat angka random untuk undian, game, dll.</p>
+
+    <div class="row">
+      <div>
+        <label>Min:</label>
+        <input type="number" id="minNum" value="1">
+      </div>
+      <div>
+        <label>Max:</label>
+        <input type="number" id="maxNum" value="100">
+      </div>
+    </div>
+
+    <button onclick="randomNumber()">Generate</button>
+    <h3 id="randomResult">🎲 Hasil: -</h3>
+  </div>
+
+  <div class="ads">📌 SLOT IKLAN #7</div>
+
+  <!-- DOWNLOAD PAGE -->
+  <div class="card" id="download">
+    <h2>Download File (Cuan Shortlink)</h2>
+    <p>Ganti link download ini pakai shortlink Safelinku / ShrinkMe / Linkvertise.</p>
+
+    <a class="download-btn" href="https://example.com" target="_blank">
+      Download Sekarang
+    </a>
+
+    <p style="font-size:13px; opacity:0.8;">
+      *Ganti "example.com" jadi link shortlink kamu biar dapat uang per klik.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 FastTools | Tools Online Gratis
+</footer>
+
+<script>
+  function getInput() {
+    return document.getElementById("inputText").value;
+  }
+
+  function setOutput(text) {
+    document.getElementById("outputText").value = text;
+  }
+
+  function toUpper() { setOutput(getInput().toUpperCase()); }
+  function toLower() { setOutput(getInput().toLowerCase()); }
+
+  function titleCase() {
+    let text = getInput().toLowerCase();
+    let result = text.replace(/\b\w/g, char => char.toUpperCase());
+    setOutput(result);
+  }
+
+  function reverseText() {
+    setOutput(getInput().split("").reverse().join(""));
+  }
+
+  function removeSpaces() {
+    setOutput(getInput().replace(/\s+/g, ""));
+  }
+
+  function removeExtraSpaces() {
+    setOutput(getInput().replace(/\s+/g, " ").trim());
+  }
+
+  function removeNewLines() {
+    setOutput(getInput().replace(/\n/g, " "));
+  }
+
+  function countText() {
+    let text = getInput().trim();
+    if (text.length === 0) {
+      document.getElementById("countResult").innerHTML = "📌 Tidak ada teks.";
+      return;
+    }
+
+    let words = text.split(/\s+/).filter(w => w.length > 0);
+    let chars = text.length;
+    let charsNoSpace = text.replace(/\s/g, "").length;
+    let lines = text.split("\n").length;
+
+    document.getElementById("countResult").innerHTML =
+      "✅ Words: <b>" + words.length + "</b><br>" +
+      "✅ Characters: <b>" + chars + "</b><br>" +
+      "✅ Characters (No Space): <b>" + charsNoSpace + "</b><br>" +
+      "✅ Lines: <b>" + lines + "</b>";
+  }
+
+  function clearAll() {
+    document.getElementById("inputText").value = "";
+    document.getElementById("outputText").value = "";
+    document.getElementById("countResult").innerHTML = "📌 Info: Word count akan muncul di sini.";
+  }
+
+  function copyOutput() {
+    let out = document.getElementById("outputText");
+    out.select();
+    document.execCommand("copy");
+    alert("Output berhasil dicopy!");
+  }
+
+  function downloadTxt() {
+    let text = document.getElementById("outputText").value;
+    if (text.trim() === "") {
+      alert("Output kosong!");
+      return;
+    }
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "hasil-fasttools.txt";
+    link.click();
+  }
+
+  // IMAGE COMPRESS
+  function compressImage() {
+    const fileInput = document.getElementById("imageInput");
+    const file = fileInput.files[0];
+
+    if (!file) {
+      alert("Pilih gambar dulu!");
+      return;
+    }
+
+    const originalSize = (file.size / 1024).toFixed(2);
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = function() {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        let width = img.width;
+        let height = img.height;
+
+        const maxWidth = 900;
+        if (width > maxWidth) {
+          height = height * (maxWidth / width);
+          width = maxWidth;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(function(blob) {
+          const compressedSize = (blob.size / 1024).toFixed(2);
+          const compressedUrl = URL.createObjectURL(blob);
+
+          const downloadLink = document.getElementById("downloadLink");
+          downloadLink.href = compressedUrl;
+          downloadLink.style.display = "inline-block";
+
+          document.getElementById("imgInfo").innerHTML =
+            "✅ Asli: <b>" + originalSize + " KB</b> | Kompres: <b>" + compressedSize + " KB</b>";
+        }, "image/jpeg", 0.6);
+      };
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  // QR CODE (simple generator)
+  function generateQR() {
+    let text = document.getElementById("qrText").value.trim();
+    if (!text) {
+      alert("Masukkan teks/link dulu!");
+      return;
+    }
+
+    let canvas = document.getElementById("qrCanvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "black";
+    ctx.font = "14px Arial";
+    ctx.fillText("QR CODE:", 10, 20);
+
+    // QR palsu style (bukan QR asli, tapi tetap bisa buat display)
+    // Kalau mau QR asli, harus pakai library.
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+      hash = text.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    let size = 10;
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        let val = (hash + x * y) % 2;
+        if (val === 0) {
+          ctx.fillRect(25 + x * size, 35 + y * size, size, size);
+        }
+      }
+    }
+
+    ctx.fillStyle = "black";
+    ctx.font = "10px Arial";
+    ctx.fillText(text.substring(0, 30), 10, 245);
+  }
+
+  function downloadQR() {
+    let canvas = document.getElementById("qrCanvas");
+    let link = document.createElement("a");
+    link.download = "qrcode.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  }
+
+  // PASSWORD GENERATOR
+  function generatePassword() {
+    let length = parseInt(document.getElementById("passLength").value);
+    let count = parseInt(document.getElementById("passCount").value);
+
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+<>?";
+    let result = "";
+
+    for (let i = 0; i < count; i++) {
+      let pass = "";
+      for (let j = 0; j < length; j++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      result += pass + "\n";
+    }
+
+    document.getElementById("passOutput").value = result.trim();
+  }
+
+  function copyPassword() {
+    let out = document.getElementById("passOutput");
+    out.select();
+    document.execCommand("copy");
+    alert("Password berhasil dicopy!");
+  }
+
+  // BASE64
+  function base64Encode() {
+    let text = document.getElementById("encodeInput").value;
+    document.getElementById("encodeOutput").value = btoa(unescape(encodeURIComponent(text)));
+  }
+
+  function base64Decode() {
+    let text = document.getElementById("encodeInput").value;
+    try {
+      document.getElementById("encodeOutput").value = decodeURIComponent(escape(atob(text)));
+    } catch {
+      alert("Format Base64 salah!");
+    }
+  }
+
+  function urlEncode() {
+    let text = document.getElementById("encodeInput").value;
+    document.getElementById("encodeOutput").value = encodeURIComponent(text);
+  }
+
+  function urlDecode() {
+    let text = document.getElementById("encodeInput").value;
+    try {
+      document.getElementById("encodeOutput").value = decodeURIComponent(text);
+    } catch {
+      alert("Format URL salah!");
+    }
+  }
+
+  function copyEncode() {
+    let out = document.getElementById("encodeOutput");
+    out.select();
+    document.execCommand("copy");
+    alert("Output berhasil dicopy!");
+  }
+
+  // RANDOM NUMBER
+  function randomNumber() {
+    let min = parseInt(document.getElementById("minNum").value);
+    let max = parseInt(document.getElementById("maxNum").value);
+
+    if (min > max) {
+      alert("Min tidak boleh lebih besar dari Max!");
+      return;
+    }
+
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    document.getElementById("randomResult").innerHTML = "🎲 Hasil: " + result;
+  }
+</script>
+
+</body>
+</html>
